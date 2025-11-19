@@ -4,7 +4,6 @@ export default function ParentNavbar() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Para resaltar el botón activo
   const isActive = (path) =>
     location.pathname === path ? "text-yellow-600 font-semibold" : "text-gray-700";
 
@@ -38,7 +37,7 @@ export default function ParentNavbar() {
             Dashboard
           </button>
 
-          {/* RUTINAS → Va al RegisterRoutine */}
+          {/* RUTINAS → ahora va directo a RegisterRoutine */}
           <button
             className={`flex items-center gap-2 rounded-lg px-3 py-2 font-medium bg-white hover:text-yellow-600 ${isActive("/parent/routines")}`}
             onClick={() => navigate("/parent/routines")}
@@ -49,8 +48,7 @@ export default function ParentNavbar() {
 
           {/* HIJOS */}
           <button
-            className={`flex items-center gap-2 rounded-lg px-3 py-2 font-medium bg-white hover:text-yellow-600 ${isActive("/parent/children")}`}
-            onClick={() => navigate("/parent/children")}
+            className="flex items-center gap-2 rounded-lg px-3 py-2 font-medium bg-white hover:text-yellow-600"
           >
             <i className="fa-solid fa-user-group text-lg"></i>
             Hijos
@@ -58,8 +56,7 @@ export default function ParentNavbar() {
 
           {/* NOTIFICACIONES */}
           <button
-            className={`flex items-center gap-2 rounded-lg px-3 py-2 font-medium bg-white hover:text-yellow-600 ${isActive("/parent/notifications")}`}
-            onClick={() => navigate("/parent/notifications")}
+            className="flex items-center gap-2 rounded-lg px-3 py-2 font-medium bg-white hover:text-yellow-600"
           >
             <i className="fa-solid fa-bell text-lg"></i>
             Notificación
@@ -67,12 +64,14 @@ export default function ParentNavbar() {
 
           {/* CONFIG */}
           <button
-            className={`flex items-center gap-2 rounded-lg px-3 py-2 font-medium bg-white hover:text-yellow-600 ${isActive("/parent/settings")}`}
+            className="flex items-center gap-2 rounded-lg px-3 py-2 font-medium bg-white hover:text-yellow-600"
             onClick={() => navigate("/parent/settings")}
           >
             <i className="fa-solid fa-gear text-lg"></i>
             Configuración
           </button>
+
+
         </div>
       </div>
 

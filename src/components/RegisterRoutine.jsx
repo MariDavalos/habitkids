@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ParentNavbar from "./ParentNavbar";
+
 
 export default function RegisterRoutine() {
   const navigate = useNavigate();
@@ -21,65 +23,8 @@ export default function RegisterRoutine() {
   return (
     <div className="min-h-screen bg-[#FFFBEF]">
 
-      {/* 🔸 NAVBAR PADRE */}
-      <nav className="w-full bg-[#FFFBEF] border-b border-gray-200 py-4 px-8 flex items-center justify-between">
-
-        {/* IZQUIERDA: LOGO + MENÚ */}
-        <div className="flex items-center gap-10">
-
-          {/* LOGO */}
-          <div
-            className="flex items-center gap-3 cursor-pointer"
-            onClick={() => navigate("/parent/dashboard")}
-          >
-            <div className="w-10 h-10 bg-yellow-400 rounded-lg flex items-center justify-center shadow">
-              <img src="/src/assets/caritafeliz.png" alt="logo" className="w-7 invert" />
-            </div>
-
-            <span className="text-xl font-bold text-yellow-600">HabitKids</span>
-          </div>
-
-          {/* MENÚ */}
-          <div className="flex items-center gap-8">
-
-            <button
-              className="flex items-center gap-2 text-gray-700 hover:text-yellow-600 rounded-lg px-3 py-2 font-medium bg-white"
-              onClick={() => navigate("/parent/dashboard")}
-            >
-              <i className="fa-solid fa-house text-lg"></i>
-              Dashboard
-            </button>
-
-            {/* Rutinas → ya enlazado */}
-            <button
-              className="flex items-center gap-2 text-yellow-600 font-semibold rounded-lg px-3 py-2 bg-white"
-              onClick={() => navigate("/parent/routines")}
-            >
-              <i className="fa-solid fa-list-check text-lg"></i>
-              Rutinas
-            </button>
-
-            <button className="flex items-center gap-2 text-gray-700 hover:text-yellow-600 rounded-lg px-3 py-2 bg-white font-medium">
-              <i className="fa-solid fa-user-group text-lg"></i>
-              Hijos
-            </button>
-
-            <button className="flex items-center gap-2 text-gray-700 hover:text-yellow-600 rounded-lg px-3 py-2 bg-white font-medium">
-              <i className="fa-solid fa-gear text-lg"></i>
-              Configuración
-            </button>
-
-          </div>
-        </div>
-
-        {/* LOGOUT */}
-        <button
-          className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow hover:bg-red-50 transition"
-          onClick={() => navigate("/login")}
-        >
-          <i className="fa-solid fa-right-from-bracket text-red-500 text-xl"></i>
-        </button>
-      </nav>
+      {/* NAVBAR ESTÁNDAR */}
+      <ParentNavbar />
 
       {/* 🔸 CONTENIDO PRINCIPAL */}
       <div className="flex flex-col items-center py-12 px-4">
@@ -139,10 +84,9 @@ export default function RegisterRoutine() {
                 key={icon.id}
                 onClick={() => setSelectedIcon(icon.id)}
                 className={`w-16 h-16 flex items-center justify-center rounded-xl border transition
-                  ${
-                    selectedIcon === icon.id
-                      ? "bg-yellow-200 border-yellow-400 shadow"
-                      : "bg-white border-gray-300 hover:bg-gray-100"
+                  ${selectedIcon === icon.id
+                    ? "bg-yellow-200 border-yellow-400 shadow"
+                    : "bg-white border-gray-300 hover:bg-gray-100"
                   }
                 `}
               >
