@@ -25,6 +25,11 @@ import ParentRoutines from "./components/ParentRoutines";
 import RegisterRoutine from "./components/RegisterRoutine";
 import ParentSettings from "./components/ParentSettings";
 import ParentNavbar from "./components/ParentNavbar";
+import RoutineTimer from "./components/RoutineTimer";
+import CongratsScreen from "./components/CongratsScreen";
+
+
+
 
 function App() {
   const location = useLocation();
@@ -39,6 +44,8 @@ function App() {
     "/parent/routines/create",
 
     "/parent/settings",
+  
+
   ];
 
   /* --- RUTAS SIN NINGÚN NAVBAR (login, register, niño) --- */
@@ -47,6 +54,8 @@ function App() {
     "/register",
     "/child/dashboard",
     "/child/today",
+    "/child/today/timer",
+    "/child/congrats",
   ];
 
   const isParentRoute = parentRoutes.includes(location.pathname);
@@ -98,6 +107,12 @@ function App() {
 
         {/* CONFIGURACIÓN PADRE */}
         <Route path="/parent/settings" element={<ParentSettings />} />
+
+        <Route path="/child/today/timer" element={<RoutineTimer />} />
+        <Route path="/child/congrats" element={<CongratsScreen />} />
+
+
+
       </Routes>
 
       {/* ----- FOOTER SOLO EN PÁGINAS PÚBLICAS ----- */}
