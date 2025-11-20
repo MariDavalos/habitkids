@@ -20,8 +20,6 @@ export default function RegisterChildPage() {
     return (
         <div className="min-h-screen bg-[#FFFBEF]">
 
-            {/* NAVBAR ESTÁNDAR */}
-            <ParentNavbar />
 
             {/* CONTENIDO PRINCIPAL */}
             <div className="flex flex-col items-center py-12 px-4">

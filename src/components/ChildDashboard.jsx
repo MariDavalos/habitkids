@@ -140,9 +140,10 @@ export default function ChildDashboard() {
                 </div>
 
                 {/* Botón de ver rutinas */}
+                
                 <button
                     className="mt-6 bg-yellow-400 hover:bg-yellow-500 transition text-black px-6 py-3 rounded-full font-semibold shadow"
-                    onClick={() => navigate("/child/routines")}
+                    onClick={() => navigate("/child/today")}
                 >
                     Ver mis Rutinas de Hoy →
                 </button>

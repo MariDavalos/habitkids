@@ -16,6 +16,7 @@ import Register from "./components/Register";
 /* ----- DASHBOARDS ----- */
 import ChildDashboard from "./components/ChildDashboard";
 import ParentDashboard from "./components/ParentDashboard";
+import TodayPath from "./components/TodayPath";
 
 /* ----- PARENT COMPONENTS ----- */
 import RegisterChildPage from "./components/RegisterChildPage";
@@ -25,11 +26,10 @@ import RegisterRoutine from "./components/RegisterRoutine";
 import ParentSettings from "./components/ParentSettings";
 import ParentNavbar from "./components/ParentNavbar";
 
-
 function App() {
   const location = useLocation();
 
-  /* Rutas que usan el NAVBAR del padre */
+  /* --- RUTAS QUE USAN NAVBAR DEL PADRE --- */
   const parentRoutes = [
     "/parent/dashboard",
     "/parent/dashboard/register",
@@ -41,11 +41,12 @@ function App() {
     "/parent/settings",
   ];
 
-  /* Rutas que NO usan ningún navbar (login, register, niño) */
+  /* --- RUTAS SIN NINGÚN NAVBAR (login, register, niño) --- */
   const noNavbarRoutes = [
     "/login",
     "/register",
     "/child/dashboard",
+    "/child/today",
   ];
 
   const isParentRoute = parentRoutes.includes(location.pathname);
@@ -53,10 +54,11 @@ function App() {
 
   return (
     <>
-      {/* NAVBAR: público, padre o ninguno */}
+      {/* ----- NAVBARS ----- */}
       {!hideNavbar && !isParentRoute && <Navbar />}
       {isParentRoute && <ParentNavbar />}
 
+      {/* ----- TODAS LAS RUTAS ----- */}
       <Routes>
 
         {/* HOME */}
@@ -80,10 +82,13 @@ function App() {
         {/* DASHBOARD NIÑO */}
         <Route path="/child/dashboard" element={<ChildDashboard />} />
 
-        {/* PADRE */}
+        {/* RUTA DEL CAMINO DE HOY */}
+        <Route path="/child/today" element={<TodayPath />} />
+
+        {/* DASHBOARD PADRE */}
         <Route path="/parent/dashboard" element={<ParentDashboard />} />
 
-        {/* HIJOS */}
+        {/* REGISTRO DE HIJOS */}
         <Route path="/parent/dashboard/register" element={<RegisterChildPage />} />
         <Route path="/parent/dashboard/register/success" element={<ChildRegisterSuccess />} />
 
@@ -91,12 +96,11 @@ function App() {
         <Route path="/parent/routines" element={<ParentRoutines />} />
         <Route path="/parent/routines/create" element={<RegisterRoutine />} />
 
-        {/* CONFIGURACIÓN */}
+        {/* CONFIGURACIÓN PADRE */}
         <Route path="/parent/settings" element={<ParentSettings />} />
-
       </Routes>
 
-      {/* FOOTER solo en páginas públicas */}
+      {/* ----- FOOTER SOLO EN PÁGINAS PÚBLICAS ----- */}
       {!hideNavbar && !isParentRoute && <Footer />}
     </>
   );
